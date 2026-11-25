@@ -72,7 +72,7 @@ function LoadingScreen() {
   return <motion.div className="loading-screen" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .3 }}><div className="loader-inner"><div className="loader-brand"><span className="brand-mark">P</span> PASQUA DEV</div><div className="terminal mini-terminal"><div className="terminal-bar"><span /><span /><span /><b>pasqua@dev:~</b></div>{lines.slice(0, index + 1).map((line, i) => <p key={line} className={i === lines.length - 1 && index === lines.length - 1 ? "success" : ""}><span>$</span> {line}{i === index && <i className="cursor" />}</p>)}</div></div></motion.div>;
 }
 
-function Home() {
+export function Home() {
   const [showLoader, setShowLoader] = useState(() => !sessionStorage.getItem("pasqua-loaded"));
   useEffect(() => { if (showLoader) { const t = setTimeout(() => { sessionStorage.setItem("pasqua-loaded", "1"); setShowLoader(false); }, 1250); return () => clearTimeout(t); } }, [showLoader]);
   return <>
